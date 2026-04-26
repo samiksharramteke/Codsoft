@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #1a1a2e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    .calculator {
+      background: #16213e;
+      border-radius: 20px;
+      padding: 24px;
+      width: 320px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    /* DISPLAY SCREEN */
+    .display {
+      background: #0f3460;
+      border-radius: 12px;
+      padding: 20px 16px;
+      margin-bottom: 20px;
+      text-align: right;
+    }
+
+    /* Small text showing the expression */
+    .display .expression {
+      color: #7ec8e3;
+      font-size: 14px;
+      min-height: 20px;
+      margin-bottom: 6px;
+      word-break: break-all;
+    }
+
+    /* Big text showing the current number */
+    .display .result {
+      color: white;
+      font-size: 36px;
+      word-break: break-all;
+    }
+
+    /* BUTTON GRID */
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    button {
+      padding: 18px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: opacity 0.1s;
+    }
+
+    button:active {
+      opacity: 0.7;
+    }
+
+    /* Number buttons */
+    .btn-number {
+      background: #1a1a2e;
+      color: white;
+    }
+
+    /* Operator buttons (+, -, *, /) */
+    .btn-operator {
+      background: #e0c97f;
+      color: #1a1a2e;
+    }
+
+    /* Clear and backspace */
+    .btn-clear {
+      background: #e05c5c;
+      color: white;
+    }
+
+    /* Equals button */
+    .btn-equals {
+      background: #2563eb;
+      color: white;
+    }
+
+    /* Make zero button span 2 columns */
+    .btn-zero {
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+
+    <!-- DISPLAY -->
+    <div class="display">
+      <div class="expression" id="expression"></div>
+      <div class="result" id="result">0</div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+
+      <!-- Row 1 -->
+      <button class="btn-clear" onclick="clearAll()">AC</button>
+      <button class="btn-clear" onclick="deleteLast()">⌫</button>
+      <button class="btn-operator" onclick="inputOperator('%')">%</button>
+      <button class="btn-operator" onclick="inputOperator('/')">÷</button>
+
+      <!-- Row 2 -->
+      <button class="btn-number" onclick="inputNumber('7')">7</button>
+      <button class="btn-number" onclick="inputNumber('8')">8</button>
+      <button class="btn-number" onclick="inputNumber('9')">9</button>
+      <button class="btn-operator" onclick="inputOperator('*')">×</button>
+
+      <!-- Row 3 -->
+      <button class="btn-number" onclick="inputNumber('4')">4</button>
+      <button class="btn-number" onclick="inputNumber('5')">5</button>
+      <button class="btn-number" onclick="inputNumber('6')">6</button>
+      <button class="btn-operator" onclick="inputOperator('-')">−</button>
+
+      <!-- Row 4 -->
+      <button class="btn-number" onclick="inputNumber('1')">1</button>
+      <button class="btn-number" onclick="inputNumber('2')">2</button>
+      <button class="btn-number" onclick="inputNumber('3')">3</button>
+      <button class="btn-operator" onclick="inputOperator('+')">+</button>
+
+      <!-- Row 5 -->
+      <button class="btn-number btn-zero" onclick="inputNumber('0')">0</button>
+      <button class="btn-number" onclick="inputDecimal()">.</button>
+      <button class="btn-equals" onclick="calculate()">=</button>
+
+    </div>
+  </div>
+
+  <script>
+    // These variables store the calculator state
+    let currentInput = '';     // The number being typed right now
+    let expression = '';       // The full expression like "5 + 3"
+    let justCalculated = false; // Did we just press equals?
+
+    // Get the display elements
+    const resultDisplay = document.getElementById('result');
+    const expressionDisplay = document.getElementById('expression');
+
+    // Called when a number button is pressed
+    function inputNumber(num) {
+      // If we just got a result, start fresh
+      if (justCalculated) {
+        currentInput = '';
+        expression = '';
+        justCalculated = false;
+      }
+
+      // Prevent typing too many digits
+      if (currentInput.length >= 10) return;
+
+      currentInput += num;
+      resultDisplay.textContent = currentInput;
+    }
+
+    // Called when an operator (+, -, *, /) is pressed
+    function inputOperator(op) {
+      justCalculated = false;
+
+      // If no number typed yet, just update the operator
+      if (currentInput === '' && expression !== '') {
+        // Replace the last operator
+        expression = expression.slice(0, -1) + op;
+        expressionDisplay.textContent = expression;
+        return;
+      }
+
+      if (currentInput !== '') {
+        expression += currentInput + op;
+        expressionDisplay.textContent = expression;
+        currentInput = '';
+        resultDisplay.textContent = '0';
+      }
+    }
+
+    // Called when the decimal point "." is pressed
+    function inputDecimal() {
+      // Don't add a second decimal point
+      if (currentInput.includes('.')) return;
+      if (currentInput === '') currentInput = '0';
+      currentInput += '.';
+      resultDisplay.textContent = currentInput;
+    }
+
+    // Called when "=" is pressed
+    function calculate() {
+      if (expression === '' && currentInput === '') return;
+
+      // Build the full math expression
+      let fullExpression = expression + currentInput;
+
+      if (fullExpression === '') return;
+
+      try {
+        // eval() computes the math expression string
+        let answer = eval(fullExpression);
+
+        // Handle division by zero
+        if (!isFinite(answer)) {
+          resultDisplay.textContent = 'Error';
+          expressionDisplay.textContent = '';
+          currentInput = '';
+          expression = '';
+          return;
+        }
+
+        // Round to avoid floating point weirdness like 0.1 + 0.2 = 0.30000000001
+        answer = parseFloat(answer.toFixed(8));
+
+        expressionDisplay.textContent = fullExpression + '=';
+        resultDisplay.textContent = answer;
+
+        // Store the answer so we can use it in the next calculation
+        currentInput = String(answer);
+        expression = '';
+        justCalculated = true;
+
+      } catch (e) {
+        resultDisplay.textContent = 'Error';
+        currentInput = '';
+        expression = '';
+      }
+    }
+
+    // Called when "AC" is pressed - clears everything
+    function clearAll() {
+      currentInput = '';
+      expression = '';
+      justCalculated = false;
+      resultDisplay.textContent = '0';
+      expressionDisplay.textContent = '';
+    }
+
+    // Called when "⌫" is pressed - deletes last character
+    function deleteLast() {
+      if (justCalculated) {
+        clearAll();
+        return;
+      }
+      currentInput = currentInput.slice(0, -1);
+      resultDisplay.textContent = currentInput || '0';
+    }
+
+    // Optional: Allow keyboard input
+    document.addEventListener('keydown', function(e) {
+      if (e.key >= '0' && e.key <= '9') inputNumber(e.key);
+      else if (e.key === '+') inputOperator('+');
+      else if (e.key === '-') inputOperator('-');
+      else if (e.key === '*') inputOperator('*');
+      else if (e.key === '/') { e.preventDefault(); inputOperator('/'); }
+      else if (e.key === '%') inputOperator('%');
+      else if (e.key === '.') inputDecimal();
+      else if (e.key === 'Enter' || e.key === '=') calculate();
+      else if (e.key === 'Backspace') deleteLast();
+      else if (e.key === 'Escape') clearAll();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, serif;
+      color: #222;
+      background: #f9f6f1;
+    }
+
+    /* HEADER */
+    header {
+      background: #1a1a2e;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    header h1 {
+      font-size: 48px;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 18px;
+      margin-top: 10px;
+      color: #aaa;
+    }
+
+    /* NAVIGATION */
+    nav {
+      background: #16213e;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 14px;
+    }
+
+    nav a {
+      color: #e0c97f;
+      text-decoration: none;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    section h2 {
+      font-size: 28px;
+      border-bottom: 3px solid #e0c97f;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+      color: #1a1a2e;
+    }
+
+    /* ABOUT */
+    #about img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #e0c97f;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    #about p {
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    /* SKILLS */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .skills-list li {
+      background: #1a1a2e;
+      color: #e0c97f;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 15px;
+      font-family: Arial, sans-serif;
+    }
+
+    /* PROJECTS */
+    .project-card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .project-card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: #1a1a2e;
+    }
+
+    .project-card p {
+      color: #555;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* RESUME */
+    #resume a {
+      display: inline-block;
+      background: #e0c97f;
+      color: #1a1a2e;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+
+    #resume a:hover {
+      background: #c9b060;
+    }
+
+    /* CONTACT */
+    #contact p {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1a1a2e;
+      color: #aaa;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Samiksha Ravi Ramteke</h1>
+    <p>Web Developer · Designer · Creator</p>
+  </header>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
+    <!-- Replace the src below with your own image URL -->
+    <img src="image.jpeg" alt="My Image"  />
+    <p>
+      Hi! I'm a passionate web developer who loves building clean and creative websites.
+      I enjoy learning new technologies and turning ideas into real projects.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul class="skills-list">
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>Responsive Design</li>
+      <li>Problem Solving</li>
+    </ul>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project-card">
+      <h3>Project One</h3>
+      <p>A landing page built using HTML and CSS. Focused on clean layout, typography, and color design.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>Project Two</h3>
+      <p>A simple JavaScript calculator with basic arithmetic operations and a clean user interface.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>Project Three</h3>
+      <p>A responsive portfolio website (this one!) built from scratch using pure HTML, CSS, and JavaScript.</p>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume">
+    <h2>Resume</h2>
+    <p>Download my resume to see my full experience and qualifications.</p>
+    <!-- Replace # with the actual link to your resume PDF -->
+    <a href="#">Download Resume (PDF)</a>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>📧 Email: samiksharamteke700@email.com</p>
+    <p>📱 Phone: +91 9209142565</p>
+    <p>🌐 GitHub: samiksharramteke</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Samiksha Ravi Ramteke. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>1

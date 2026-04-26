@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Landing Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #222;
+    }
+
+    /* NAVIGATION BAR */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      padding: 16px 40px;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+    }
+
+    nav .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #2563eb;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+    }
+
+    nav ul a {
+      text-decoration: none;
+      color: #444;
+      font-size: 15px;
+    }
+
+    nav ul a:hover {
+      color: #2563eb;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      color: #bfdbfe;
+    }
+
+    .hero button {
+      background: white;
+      color: #2563eb;
+      border: none;
+      padding: 14px 36px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .hero button:hover {
+      background: #dbeafe;
+    }
+
+    /* FEATURES SECTION */
+    .features {
+      background: #f8fafc;
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    .features h2 {
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #1e293b;
+    }
+
+    .features-grid {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .feature-box {
+      background: white;
+      border-radius: 12px;
+      padding: 30px 24px;
+      width: 220px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .feature-box .icon {
+      font-size: 40px;
+      margin-bottom: 14px;
+    }
+
+    .feature-box h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #1e293b;
+    }
+
+    .feature-box p {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    /* HOW IT WORKS */
+    .how {
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    .how h2 {
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #1e293b;
+    }
+
+    .steps {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .step {
+      width: 200px;
+    }
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background: #2563eb;
+      color: white;
+      border-radius: 50%;
+      font-size: 22px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+    }
+
+    .step h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+      color: #1e293b;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    /* CTA SECTION */
+    .cta {
+      background: #1e40af;
+      color: white;
+      text-align: center;
+      padding: 70px 20px;
+    }
+
+    .cta h2 {
+      font-size: 34px;
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      color: #bfdbfe;
+    }
+
+    .cta button {
+      background: #e0c97f;
+      color: #1e293b;
+      border: none;
+      padding: 14px 36px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .cta button:hover {
+      background: #c9b060;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 28px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">MyApp</div>
+    <ul>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#cta">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Build Something Amazing</h1>
+    <p>The simplest way to launch your idea online. Fast, clean, and beginner-friendly.</p>
+    <button>Get Started Free</button>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <h2>Why Choose Us?</h2>
+    <div class="features-grid">
+
+      <div class="feature-box">
+        <div class="icon">⚡</div>
+        <h3>Fast</h3>
+        <p>Optimized for speed so your users never have to wait.</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="icon">🎨</div>
+        <h3>Beautiful</h3>
+        <p>Clean, modern design that looks great on all devices.</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="icon">🔒</div>
+        <h3>Secure</h3>
+        <p>Your data is safe with industry-standard security.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <h2>How It Works</h2>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Sign Up</h3>
+        <p>Create your free account in less than a minute.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Customize</h3>
+        <p>Pick a template and make it your own.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Launch</h3>
+        <p>Publish your page to the world instantly.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="cta">
+    <h2>Ready to Start?</h2>
+    <p>Join thousands of creators building great things.</p>
+    <button>Create Your Page Now</button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 MyApp. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
